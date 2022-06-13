@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Card, Grid, Typography, TextField, Button } from '@mui/material'
 import { styled } from "@mui/material/styles"
 import MovieIcon from '@mui/icons-material/Movie';
+import { useNavigate } from 'react-router-dom';
 
 
 const PREFIX = 'home';
@@ -66,6 +67,7 @@ const Root = styled('Container')(({ theme }) => ({
 
 const Home = () => {
 
+    const navigate = useNavigate()
     const [searchText, setSearchText] = useState('')
 
     const handleSearchTextChange = event => {
@@ -73,11 +75,11 @@ const Home = () => {
     };
 
     const handleCleanTextClick = event => {
-       // TODO
+       setSearchText('')
     };
 
     const handleSearchTextClick = event => {
-        // TODO
+        navigate(`/results?movieName=${searchText}`)
     };
 
     return(
